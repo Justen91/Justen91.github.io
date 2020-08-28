@@ -19,16 +19,16 @@
 		<div id="left">
 			<div class="container_field">
 				<label for="fname">First name:</label>
-				<input type="text" id="fname" name="fname"><br><br>
+				<input type="text" id="fname" name="fname" value="Ross"><br><br>
 			</div>
 			<div class="container_field">
 				<label for="sname">Sir name:</label>
-				<input type="text" id="sname" name="sname"><br><br>
+				<input type="text" id="sname" name="sname" value="Mcaffrey"><br><br>
 			</div>
 			<div class="container_field">
 				<span>Sex:</span>
 					 <fieldset id="gender">
-						<input type="radio" id="male" name="gender" value="M">
+						<input type="radio" id="male" name="gender" value="M" checked="checked">
 	  					<label for="male">Male</label>
 						<input type="radio" id="female" name="gender" value="F" >
 	  					<label for="female">Female</label>
@@ -36,29 +36,29 @@
 			</div>
 			<div class="container_field">
 				<label for="dob">Date of Birth:</label>
-				<input type="date" id="dob" name="dob"><br><br> 
+				<input type="date" id="dob" name="dob"  value="1991-08-18"><br><br> 
 			</div>
 		</div>
 		<div id="right">
 			<div class="container_field">
 				<label for="istate">Issueing State:</label>
-				<input type="text" id="istate" name="istate" oninput="validateLetters(this.id)"><br><br>
+				<input type="text" id="istate" name="istate" value="GBR" oninput="validateLetters(this.id)"><br><br>
 			</div>
 			<div class="container_field">
 				<label for="national">Nationality:</label>
-				<input type="text" id="national" name="national" oninput="validateLetters(this.id)"><br><br>
+				<input type="text" id="national" name="national" value="GBR" oninput="validateLetters(this.id)"><br><br>
 			</div>
 			<div class="container_field">
 				<label for="einfo">Extra Info:</label>
-				<input type="text" id="einfo" name="einfo" ><br><br>
+				<input type="text" id="einfo" name="einfo" maxlength="14" ><br><br>
 			</div>
 			<div class="container_field">
 				<label for="pnum">Pasport Number:</label>
-				<input type="text" id="pnum" name="pnum" ><br><br>
+				<input type="text" id="pnum" name="pnum"  value="701409633"><br><br>
 			</div>
 			<div class="container_field">
 				<label for="expire">Expiry Date:</label>
-				<input type="date" id="expire" name="expire" ><br><br>
+				<input type="date" id="expire" name="expire"  value="2016-01-01"><br><br>
 			</div>
 		</div>
 	</div>

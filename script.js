@@ -19,49 +19,92 @@ function convert(){
 
 
 	// Calculations Passport Number
-	var pnCalc1 = isPassportNumber(pasportNumber[0]) * 7
-	var pnCalc2 = isPassportNumber(pasportNumber[1]) * 3
-	var pnCalc3 = isPassportNumber(pasportNumber[2]) * 1
-	var pnCalc4 = isPassportNumber(pasportNumber[3]) * 7
-	var pnCalc5 = isPassportNumber(pasportNumber[4]) * 3
-	var pnCalc6 = isPassportNumber(pasportNumber[5]) * 1
-	var pnCalc7 = isPassportNumber(pasportNumber[6]) * 7
-	var pnCalc8 = isPassportNumber(pasportNumber[7]) * 3
-	var pnCalc9 = isPassportNumber(pasportNumber[8]) * 1
-	var pnTotalCalc = pnCalc1 + pnCalc2 + pnCalc3 + pnCalc4 + pnCalc5 + pnCalc6 + pnCalc7 + pnCalc8 + pnCalc9
+	var pnArray = [];
+	for (var i=0 ; i < String(pasportNumber).length;i++) { 
+		pnArray.push( parseInt( isPassportNumber( String(pasportNumber)[i] )) ) 
+	}
+	var pnTotalArray = checkDigit(pnArray);
+	var pnTotalCalc = addArray(pnTotalArray)
 	var pnTotalCalcLast = String(pnTotalCalc)[String(pnTotalCalc).length - 1]
+
 
 	// Calculations Date of Birth
 	var dob = String(dob).replace(/-/g ,'').replace(/\//g , '')
-	var dobCalc1 = dob[0] * 7
-	var dobCalc2 = dob[1] * 3
-	var dobCalc3 = dob[2] * 1
-	var dobCalc4 = dob[3] * 7
-	var dobCalc5 = dob[4] * 3
-	var dobCalc6 = dob[5] * 1
-	var dobTotalCalc = (dobCalc1 + dobCalc2 + dobCalc3 + dobCalc4 + dobCalc5 + dobCalc6 ) / 10
+	var dobArray = [];
+	for (var i=0 ; i < String(dob).length;i++) { 
+		dobArray.push( parseInt(  String(dob)[i] ) ) 
+	}
+	var dobTotalArray = checkDigit(dobArray);
+	var dobTotalCalc = addArray(dobTotalArray)
 	var dobTotalCalcLast = String(dobTotalCalc)[String(dobTotalCalc).length - 1]
 
-	// Calculations Expiration Date
-	var expirationDate = String(expirationDate).replace(/-/g,'').replace(/\//g , '')
-	var exCalc1 = expirationDate[0] * 7
-	var exCalc2 = expirationDate[1] * 3
-	var exCalc3 = expirationDate[2] * 1
-	var exCalc4 = expirationDate[3] * 7
-	var exCalc5 = expirationDate[4] * 3
-	var exCalc6 = expirationDate[5] * 1
-	var exCalcTotal = (exCalc1 + exCalc2 + exCalc3 + exCalc4 + exCalc5 + exCalc6 ) / 10 
-	var exCalcTotalLast = String(exCalcTotal)[String(exCalcTotal).length - 1]
 
-	// Final Calcuations
-	var finalCalc = (parseFloat(pnTotalCalc) + parseFloat(pnTotalCalcLast) + parseFloat(dobTotalCalc) + parseFloat(dobTotalCalcLast) + parseFloat(exCalcTotal) + parseFloat(exCalcTotalLast)) 
-	var finalCalcLast = String(finalCalc)[String(finalCalc).length - 1]
+
+	// Calculations Expiration Date
+	var expirationDate = String(expirationDate).replace(/-/g ,'').replace(/\//g , '')
+	var exArray = [];
+	for (var i=0 ; i < String(expirationDate).length;i++) { 
+		exArray.push( parseInt(  String(expirationDate)[i] ) ) 
+	}
+	var exTotalArray = checkDigit(exArray);
+	var exTotalCalc = addArray(exTotalArray)
+	var exTotalCalcLast = String(exTotalCalc)[String(exTotalCalc).length - 1]
+
+
+	// Calculations Extra Info
+	var infoArray = [];
+	for (var i=0 ; i < String(extraInfo).length;i++) { 
+		infoArray.push( parseInt( isPassportNumber( String(extraInfo)[i] )) ) 
+	}
+	var infoTotalArray = checkDigit(infoArray);
+	var infoTotalCalc = addArray(infoTotalArray)
+	var infoTotalCalcLast = String(infoTotalCalc)[String(infoTotalCalc).length - 1]
+
+
+
+	// Final Calculations
+	var finalString = String(pasportNumber) + String(pnTotalCalcLast) + String(dob) + String(dobTotalCalcLast) + String(expirationDate) + String(exTotalCalcLast) + String(extraInfo) + String(infoTotalCalcLast)
+	var finalArray = [];
+	for (var i=0 ; i < String(finalString).length;i++) { 
+		finalArray.push( parseInt( isPassportNumber( String(finalString)[i] )) ) 
+	}
+	var finalTotalArray = checkDigit(finalArray);
+	var finalTotalCalc = addArray(finalTotalArray)
+	var finalTotalCalcLast = String(finalTotalCalc)[String(finalTotalCalc).length - 1]
+
+
+
+
+	// Determining Length 
+		// Name
+	nameOutput = lastName + '<' + firstName
+	while (nameOutput.length > 39) {
+		nameOutput = nameOutput.slice(0, -1);
+	}
+
+	while (nameOutput.length < 39) {
+		nameOutput = nameOutput + '<'
+	}
+
+		// Extra Info
+	extraInfoOutput = extraInfo
+	while (extraInfoOutput.length > 14) {
+		extraInfoOutput = extraInfoOutput.slice(0, -1);
+	}
+
+	while (extraInfoOutput.length < 14) {
+		extraInfoOutput = extraInfoOutput + '<'
+	}
+
+
 
 	// Final Output of MRZ
-	var output = 'P<' + issueingState.toUpperCase() + lastName + '<' + firstName  + '<<<<<<<' + 
-	'\n' + pasportNumber.toUpperCase() + pnTotalCalcLast + nationality + dob + dobTotalCalcLast + sex + expirationDate + exCalcTotalLast + '<<<<<<<' + finalCalcLast
+	var output = 'P<' + issueingState.toUpperCase() + nameOutput + '\n' + 
+		pasportNumber.toUpperCase() + pnTotalCalcLast + nationality + dob + dobTotalCalcLast + sex + expirationDate + exTotalCalcLast + extraInfoOutput.toUpperCase() + infoTotalCalcLast +finalTotalCalcLast
 	var mrzElement = document.getElementById("mrz");
 	mrzElement.value= output;
+
+
 }
 
 
@@ -73,7 +116,9 @@ function convertDates(date){
 
 
 function isPassportNumber(number) {
-	if(Number.isNaN( parseInt(number) ) == false ) {
+	if (number == undefined ) {
+		return '0'
+	} else if(Number.isNaN( parseInt(number) ) == false ) {
 		return number
 	}  else {
 		return number.toLowerCase().charCodeAt(0) - 97 + 1 + 9
@@ -95,4 +140,30 @@ function validateLetters(id){
 		element.style.border =  '2px solid #FF0000'
 	}
 
+}
+
+
+
+function checkDigit(arrayList){
+	var outputArray = [];
+	for (var i = 0; i < arrayList.length; i++) {
+		if (i % 3 == 2) {
+			outputArray.push ( arrayList[i] * 1)
+		} else if ( i % 3 == 1) {
+			outputArray.push ( arrayList[i] * 3)
+		} else {
+			outputArray.push ( arrayList[i] * 7)
+		}
+	}
+	return outputArray
+}
+
+
+
+function addArray(arrayList) {
+	var output = 0; 
+	for (var i = 0; i< arrayList.length ; i++) {
+		output = output + arrayList[i]
+	}
+	return output;
 }
