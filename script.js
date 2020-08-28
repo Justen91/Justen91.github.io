@@ -59,7 +59,7 @@ function convert(){
 
 	// Final Output of MRZ
 	var output = 'P<' + issueingState.toUpperCase() + lastName + '<' + firstName  + '<<<<<<<' + 
-	'\n' + pasportNumber.toUpperCase() + pnCalc9 + pnTotalCalcLast + nationality + dob + dobTotalCalcLast + sex + expirationDate + exCalcTotalLast + '<<<<<<<' + finalCalcLast
+	'\n' + pasportNumber.toUpperCase() + pnTotalCalcLast + nationality + dob + dobTotalCalcLast + sex + expirationDate + exCalcTotalLast + '<<<<<<<' + finalCalcLast
 	var mrzElement = document.getElementById("mrz");
 	mrzElement.value= output;
 }
@@ -90,6 +90,7 @@ function validateLetters(id){
 	textEntered =  document.getElementById(id).value 
 	if (matchLetters.test(textEntered)){
 		element.style.border = '1px solid #767676'
+
 	} else {
 		element.style.border =  '2px solid #FF0000'
 	}
