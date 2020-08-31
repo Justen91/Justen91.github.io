@@ -2,6 +2,7 @@ function convert(){
 	// Pull filled Data
 	var firstName = document.getElementById("fname").value
 	var lastName = document.getElementById("sname").value
+	var sex = '';
 	if(document.getElementById('male').checked) {
 		sex = document.getElementById('male').value
 	} else if (document.getElementById('female').checked ) {
@@ -13,6 +14,31 @@ function convert(){
 	var pasportNumber = document.getElementById("pnum").value
 	var dob = convertDates(document.getElementById("dob").value)
 	var expirationDate = convertDates(document.getElementById("expire").value)
+
+
+	// Error validation, check if info is correctly filled out
+	var errors = []
+	if (firstName.length == 0 ) { errors.push('first name')}
+	if (lastName.length == 0 ) { errors.push('last name')}
+	if (sex.length == 0 ) { errors.push('gender')}
+	if (issueingState.length < 3 || issueingState.length > 3 ) { errors.push('issueing state')}
+	if (nationality.length < 3 || nationality.length > 3) { errors.push('nationality')}
+	if (pasportNumber.length < 7 || nationality.length > 9) { errors.push('pasport number')}
+	if (isNaN(dob) == true ) { errors.push('date of birth')}
+	if (isNaN(expirationDate) == true ) { errors.push('expiration date')}
+
+
+	if(errors.length >= 1) {
+	var errorMessage = 'Oops, there are some fields not correctly filled out: \n'
+		for (var i = 0;i<errors.length;i++) {
+			errorMessage = errorMessage + '\n- Please fill out the ' + errors[i] + ' field'
+		}
+		alert(errorMessage)
+		return null
+	}
+
+
+
 	// Name Manipulation
 	var firstName = firstName.toUpperCase().replace(/'/g,'').replace(/[.*+?^${}()|[\]\\\s]/g,'<')
 	var lastName = lastName.toUpperCase().replace(/'/g,'').replace(/[.*+?^${}()|[\]\\\s]/g,'<')
@@ -77,30 +103,21 @@ function convert(){
 
 	// Determining Length 
 		// Name
-	nameOutput = lastName + '<' + firstName
-	while (nameOutput.length > 39) {
-		nameOutput = nameOutput.slice(0, -1);
-	}
-
-	while (nameOutput.length < 39) {
-		nameOutput = nameOutput + '<'
-	}
+	var nameOutput = lastName + '<' + firstName
+	nameOutput = lengthStringValidation(nameOutput,39)
 
 		// Extra Info
-	extraInfoOutput = extraInfo
-	while (extraInfoOutput.length > 14) {
-		extraInfoOutput = extraInfoOutput.slice(0, -1);
-	}
+	var extraInfoOutput = extraInfo
+	extraInfoOutput = lengthStringValidation(extraInfoOutput,14)
 
-	while (extraInfoOutput.length < 14) {
-		extraInfoOutput = extraInfoOutput + '<'
-	}
-
+		// Passport Number
+	var pasportNumberOutput = pasportNumber
+	pasportNumberOutput = lengthStringValidation(pasportNumberOutput,9)
 
 
 	// Final Output of MRZ
 	var output = 'P<' + issueingState.toUpperCase() + nameOutput + '\n' + 
-		pasportNumber.toUpperCase() + pnTotalCalcLast + nationality + dob + dobTotalCalcLast + sex + expirationDate + exTotalCalcLast + extraInfoOutput.toUpperCase() + infoTotalCalcLast +finalTotalCalcLast
+		pasportNumberOutput.toUpperCase() + pnTotalCalcLast + nationality + dob + dobTotalCalcLast + sex + expirationDate + exTotalCalcLast + extraInfoOutput.toUpperCase() + infoTotalCalcLast +finalTotalCalcLast
 	var mrzElement = document.getElementById("mrz");
 	mrzElement.value= output;
 
@@ -166,4 +183,16 @@ function addArray(arrayList) {
 		output = output + arrayList[i]
 	}
 	return output;
+}
+
+
+function lengthStringValidation(string, length) {
+	var stringOutput = string
+		while (stringOutput.length > length) {
+		stringOutput = stringOutput.slice(0, -1);
+	}
+	while (stringOutput.length < length) {
+		stringOutput = stringOutput + '<'
+	}
+	return stringOutput
 }
