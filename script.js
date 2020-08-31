@@ -154,7 +154,7 @@ function validateLetters(id){
 		element.style.border = '1px solid #767676'
 
 	} else {
-		element.style.border =  '2px solid #FF0000'
+		element.style.border =  '1px solid #FF0000'
 	}
 
 }
