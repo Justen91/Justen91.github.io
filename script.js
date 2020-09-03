@@ -1,5 +1,4 @@
 function convert(){
-	console.log(countries[0]['alpha-3'])
 	// Pull filled Data
 	var firstName = document.getElementById("fname").value
 	var lastName = document.getElementById("sname").value
@@ -257,7 +256,7 @@ function lengthStringValidation(string, length) {
 //       }
 //     }
 //   }
-  	
+
 // }
 
 
