@@ -134,6 +134,17 @@ body {
   background-color: DodgerBlue !important; 
   color: #ffffff; 
 }
+
+.full_country{
+    color: #b4b5b4;
+    position: relative;
+    top: -5px;
+    float: right;
+    font-size: 0.8em;
+}
+
+
+
 @media only screen and (max-width: 600px) {
 	#container{
 		margin: 2% 10%;
