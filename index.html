@@ -42,8 +42,11 @@
 		</div>
 		<div id="right">
 			<div class="container_field">
-				<label for="istate">Issueing State:</label>
-				<input type="text" id="istate" name="istate" oninput="validateLetters(this.id)"><br><br>
+				<label for="istate">Issuing State:</label>
+				<!-- <div class="autocomplete">  -->
+					<input type="text" id="istate" name="istate" form autocomplete="off" oninput="validateLetters(this.id)">
+				<!-- </div> -->
+				<br><br>
 			</div>
 			<div class="container_field">
 				<label for="national">Nationality:</label>
@@ -66,7 +69,7 @@
 
 
 	<div id="execute_field"> 
-		<button type="button" onclick="convert()">Convert to an MRZ Number!</button>
+		<button type="button" onclick="convert()">Convert to a MRZ Number!</button>
 	</div>
 
 
@@ -78,6 +81,11 @@
 
 <footer>
 </footer>
+
+<!-- 
+<script type="text/javascript">
+	autocomplete(document.getElementById("istate"), countries);
+</script> -->
 </body>
 
 </html>
