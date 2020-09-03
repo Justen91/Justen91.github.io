@@ -6,6 +6,15 @@
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 	<link rel="stylesheet" href="styles.css">
 	<script src="script.js"></script>
+	<script type="text/javascript">
+		function setCookie(cname, cvalue, exdays) {
+		    var d = new Date();
+		    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+		    var expires = "expires="+ d.toUTCString();
+		    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		setCookie(cookie_name, "disabled", -1);
+}
+	</script>
 </head>
 
 <body>
