@@ -20,11 +20,17 @@
 		<div id="left">
 			<div class="container_field">
 				<label for="fname">First name:</label>
-				<input type="text" id="fname" name="fname"><br><br>
+				<div class="input_box"> 
+					<input type="text" id="fname" name="fname">
+				</div>
+				<br><br>
 			</div>
 			<div class="container_field">
 				<label for="sname">Sir name:</label>
-				<input type="text" id="sname" name="sname"><br><br>
+				<div class="input_box"> 
+					<input type="text" id="sname" name="sname">
+				</div>
+				<br><br>
 			</div>
 			<div class="container_field">
 				<span>Sex:</span>
@@ -37,32 +43,47 @@
 			</div>
 			<div class="container_field">
 				<label for="dob">Date of Birth:</label>
-				<input type="date" id="dob" name="dob"><br><br> 
+				<div class="input_box"> 
+					<input type="date" id="dob" name="dob">
+				</div>
+				<br><br> 
 			</div>
 		</div>
 		<div id="right">
 			<div class="container_field">
 				<label for="istate">Issuing State:</label>
-				<!-- <div class="autocomplete">  -->
+				<div class="autocomplete input_box"> 
 					<input type="text" id="istate" name="istate" form autocomplete="off" oninput="validateLetters(this.id)">
-				<!-- </div> -->
+				</div>
 				<br><br>
 			</div>
 			<div class="container_field">
 				<label for="national">Nationality:</label>
-				<input type="text" id="national" name="national" oninput="validateLetters(this.id)"><br><br>
+				<div class="autocomplete input_box"> 
+					<input type="text" id="national" name="national" oninput="validateLetters(this.id)">
+				</div>
+				<br><br>
 			</div>
 			<div class="container_field">
 				<label for="einfo">Extra Info:</label>
-				<input type="text" id="einfo" name="einfo" maxlength="14" ><br><br>
+				<div class="input_box"> 
+					<input type="text" id="einfo" name="einfo" maxlength="14" >
+				</div>
+				<br><br>
 			</div>
 			<div class="container_field">
 				<label for="pnum">Pasport Number:</label>
-				<input type="text" id="pnum" name="pnum" ><br><br>
+				<div class="input_box"> 
+					<input type="text" id="pnum" name="pnum" >
+				</div>
+				<br><br>
 			</div>
 			<div class="container_field">
 				<label for="expire">Expiry Date:</label>
-				<input type="date" id="expire" name="expire" ><br><br>
+				<div class="input_box"> 
+					<input type="date" id="expire" name="expire" >
+				</div>
+				<br><br>
 			</div>
 		</div>
 	</div>
@@ -82,10 +103,11 @@
 <footer>
 </footer>
 
-<!-- 
+
 <script type="text/javascript">
 	autocomplete(document.getElementById("istate"), countries);
-</script> -->
+	autocomplete(document.getElementById("national"), countries);
+</script>
 </body>
 
 </html>

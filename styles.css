@@ -49,14 +49,17 @@ body {
 }
 
 
-.container_field>input ,.autocomplete>input ,.container_field>.autocomplete{
+.input_box{
 	float: right;
     margin-right: 15%;
     width: 50%;
     height: 1.5em;
-    border: 1px solid #767676;
 }
 
+.input_box>input{
+	width: 100%;
+    height: 1.5em;
+}
 
 #gender {
 	display: inline-block;
@@ -98,7 +101,7 @@ body {
 
 
 .autocomplete-items {
-  /*position: absolute;*/
+  position: absolute;
   border: 1px solid #d4d4d4;
   border-bottom: none;
   border-top: none;
