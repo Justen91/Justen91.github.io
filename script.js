@@ -18,22 +18,31 @@ function convert(){
 
 	// Error validation, check if info is correctly filled out
 	var errors = []
-	if (firstName.length == 0 ) { errors.push('first name')}
-	if (lastName.length == 0 ) { errors.push('last name')}
-	if (sex.length == 0 ) { errors.push('gender')}
-	if (issuingState.length < 3 || issuingState.length > 3 ) { errors.push('issuing state')}
-	if (nationality.length < 3 || nationality.length > 3) { errors.push('nationality')}
-	if (pasportNumber.length < 7 || nationality.length > 9) { errors.push('pasport number')}
-	if (isNaN(dob) == true ) { errors.push('date of birth')}
-	if (isNaN(expirationDate) == true ) { errors.push('expiration date')}
+	var nonErrors = []
+	if (firstName.length == 0 ) { errors.push( document.getElementById("fname") )									} else { nonErrors.push( document.getElementById("fname") )}
+	if (lastName.length == 0 ) { errors.push( document.getElementById("sname") )									} else { nonErrors.push( document.getElementById("sname") )}
+	if (sex.length == 0 ) { errors.push( document.getElementById("gender") )										} else { nonErrors.push( document.getElementById("istate") )}
+	if (issuingState.length < 3 || issuingState.length > 3 ) { errors.push( document.getElementById("istate") )		} else { nonErrors.push( document.getElementById("national") )}
+	if (nationality.length < 3 || nationality.length > 3) { errors.push( document.getElementById("national") )		} else { nonErrors.push( document.getElementById("pnum") )}
+	if (pasportNumber.length < 7 || nationality.length > 9) { errors.push( document.getElementById("pnum") )		} else { nonErrors.push( document.getElementById("pnum") )}
+	if (isNaN(dob) == true ) { errors.push( document.getElementById("dob") )										} else { nonErrors.push( document.getElementById("dob") )}
+	if (isNaN(expirationDate) == true ) { errors.push( document.getElementById("expire") )							} else { nonErrors.push( ocument.getElementById("expire") )}
 
+
+	console.log(errors)
+	console.log(nonErrors)
+
+	for (var i=0;i<nonErrors.length;i++){
+		nonErrors[i].classList.remove("input_error");
+		console.log(nonErrors[i])
+	}
+
+	for (var i=0;i<errors.length;i++){
+		errors[i].classList.add("input_error");
+	}	
 
 	if(errors.length >= 1) {
-	var errorMessage = 'Oops, there are some fields not correctly filled out: \n'
-		for (var i = 0;i<errors.length;i++) {
-			errorMessage = errorMessage + '\n- Please fill out the ' + errors[i] + ' field'
-		}
-		alert(errorMessage)
+		document.getElementById("mrz").value = "Errors found.\nPlease correct the issues above";
 		return null
 	}
 
