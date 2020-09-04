@@ -25,7 +25,7 @@ body {
 #header{
 	height: 70px;
 	width: 100%;
-	background-color: #3c3a3a;
+	background-color: #6720DF;
 	line-height: 70px;
     text-align: center;
     margin-bottom: 3%;
@@ -57,8 +57,8 @@ body {
 }
 
 .input_box>input{
-	width: 100%;
-    height: 1.5em;
+	width: 90%;
+    height: 2em;
 }
 
 #gender {
@@ -96,6 +96,8 @@ body {
 	width: 100%;
     resize: none;
     height: 40px;
+    border: none;
+    text-align: center;
 }
 
 
@@ -104,6 +106,7 @@ body {
   position: absolute;
   border: 1px solid #d4d4d4;
   border-bottom: none;
+  margin-top: 0.25em;
   border-top: none;
   z-index: 99;
   top: 100%;
@@ -123,6 +126,51 @@ body {
   display: inline-block;
 }
 
+
+input{
+	border: none;
+    border-radius: 1em 1em 0 0;
+    padding: 0 5%;
+
+}
+
+input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #6720DF;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+
+input:focus , #mrz:focus{
+	outline: none;
+    box-shadow: 0 0 0.4em 0.05em #6720DF;
+}
+
+label {
+	line-height: 2.5em;
+}
 
 /*when hovering an item:*/
 .autocomplete-items div:hover {

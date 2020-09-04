@@ -8,7 +8,7 @@ function convert(){
 	} else if (document.getElementById('female').checked ) {
 		sex = document.getElementById('female').value
 	}
-	var issueingState = document.getElementById("istate").value.toUpperCase();
+	var issuingState = document.getElementById("istate").value.toUpperCase();
 	var nationality = document.getElementById("national").value.toUpperCase();
 	var extraInfo = document.getElementById("einfo").value
 	var pasportNumber = document.getElementById("pnum").value
@@ -21,7 +21,7 @@ function convert(){
 	if (firstName.length == 0 ) { errors.push('first name')}
 	if (lastName.length == 0 ) { errors.push('last name')}
 	if (sex.length == 0 ) { errors.push('gender')}
-	if (issueingState.length < 3 || issueingState.length > 3 ) { errors.push('issueing state')}
+	if (issuingState.length < 3 || issuingState.length > 3 ) { errors.push('issuing state')}
 	if (nationality.length < 3 || nationality.length > 3) { errors.push('nationality')}
 	if (pasportNumber.length < 7 || nationality.length > 9) { errors.push('pasport number')}
 	if (isNaN(dob) == true ) { errors.push('date of birth')}
@@ -116,7 +116,7 @@ function convert(){
 
 
 	// Final Output of MRZ
-	var output = 'P<' + issueingState.toUpperCase() + nameOutput + '\n' + 
+	var output = 'P<' + issuingState.toUpperCase() + nameOutput + '\n' + 
 		pasportNumberOutput.toUpperCase() + pnTotalCalcLast + nationality + dob + dobTotalCalcLast + sex + expirationDate + exTotalCalcLast + extraInfoOutput.toUpperCase() + infoTotalCalcLast +finalTotalCalcLast
 	var mrzElement = document.getElementById("mrz");
 	mrzElement.value= output;
@@ -256,7 +256,7 @@ function autocomplete(inp,arr){
     if (currentFocus < 0) currentFocus = (x.length - 1);
     x[currentFocus].classList.add("autocomplete-active");
   }
-  
+
   function removeActive(x) {
     for (var i = 0; i < x.length; i++) {
       x[i].classList.remove("autocomplete-active");
@@ -273,5 +273,8 @@ function autocomplete(inp,arr){
   }
 
 }
+
+
+
 
 
