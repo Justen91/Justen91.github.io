@@ -276,5 +276,29 @@ function autocomplete(inp,arr){
 
 
 
+var copyTextRunning = false 
+function copyText(){
+  var copyText = document.getElementById("mrz");
+  copyText.select();
+  document.execCommand("copy");
+
+  
+  if (copyTextRunning) {return  null}
+  copyTextRunning = true
+  previous_text = document.getElementById("copy_text")
+  if(previous_text !== null){
+  	previous_text.remove();
+  }
+
+  button = document.getElementById("copy_button")
+  div = document.createElement('div');
+  div.setAttribute("id","copy_text")
+  div.style.opacity = 0;
+  text = document.createTextNode('MRZ Code Copied!')
+  div.appendChild(text);
+  setTimeout(function(){ div.style.opacity = 1; }, 10);
+  button.parentNode.insertBefore(div, button.nextSibling);
+  setTimeout(function(){ div.style.opacity = 0; copyTextRunning=false }, 2500);
+}
 
 
