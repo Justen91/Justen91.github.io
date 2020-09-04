@@ -201,12 +201,12 @@ label , .container_field>span{
 
 /*when hovering an item:*/
 .autocomplete-items div:hover {
-  background-color: #e9e9e9; 
+  background-color: #a58ecc; 
 }
 
 /*when navigating through the items using the arrow keys:*/
 .autocomplete-active {
-  background-color: DodgerBlue !important; 
+  background-color: #6720DF !important; 
   color: #ffffff; 
 }
 
