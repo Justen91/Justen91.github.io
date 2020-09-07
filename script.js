@@ -26,7 +26,7 @@ function convert(){
 	if (nationality.length < 3 || nationality.length > 3) { errors.push( document.getElementById("national") )		} else { nonErrors.push( document.getElementById("pnum") )}
 	if (pasportNumber.length < 7 || nationality.length > 9) { errors.push( document.getElementById("pnum") )		} else { nonErrors.push( document.getElementById("pnum") )}
 	if (isNaN(dob) == true ) { errors.push( document.getElementById("dob") )										} else { nonErrors.push( document.getElementById("dob") )}
-	if (isNaN(expirationDate) == true ) { errors.push( document.getElementById("expire") )							} else { nonErrors.push( ocument.getElementById("expire") )}
+	if (isNaN(expirationDate) == true ) { errors.push( document.getElementById("expire") )							} else { nonErrors.push( document.getElementById("expire") )}
 
 
 	console.log(errors)
